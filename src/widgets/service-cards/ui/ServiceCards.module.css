@@ -1,0 +1,180 @@
+.features {
+    padding: var(--space-6) var(--space-4);
+    color: var(--color-dark);
+    min-height: 100vh;
+    display: block;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+.features__background {
+    position: relative;
+    z-index: 1;
+}
+
+.features__inner {
+    position: relative;
+    max-width: var(--bp-1979);
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.features__heading {
+    font: var(--font-h2);
+    margin-bottom: var(--space-6);
+    color: var(--color-primary);
+    /* Анимация заголовка */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    /* Начальное состояние для анимации */
+    transform: translateX(0);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+.features__card {
+    background: var(--color-dark);
+    color: var(--color-light);
+    padding: var(--space-4);
+    border-radius: 8px;
+    text-align: left;
+    position: relative;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
+    /* Добавляем тень для глубины */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Добавляем backdrop-filter для лучшего контраста с анимированным фоном */
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2;
+}
+
+.features__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.features__card--uc {
+    border: 2px solid var(--color-accent);
+}
+
+.features__card--lnk {
+    background: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.features__card--vibro {
+    border: 2px solid var(--color-primary);
+}
+
+.features__media {
+    width: 100%;
+    height: 200px;
+    background: var(--color-gray);
+    border-radius: 4px;
+    margin-bottom: var(--space-4);
+}
+
+.features__cardTitle {
+    font: var(--font-h3);
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+}
+
+.features__card--lnk .features__cardTitle {
+    color: var(--color-dark);
+}
+
+.features__cardSubtitle {
+    font: var(--font-body);
+    margin-bottom: var(--space-3);
+    opacity: 0.8;
+}
+
+.features__service {
+    margin-bottom: var(--space-4);
+}
+
+.features__divider {
+    height: 1px;
+    background: var(--color-gray);
+    margin: var(--space-3) 0;
+}
+
+.features__itemTitle {
+    font: var(--font-h4);
+    margin-bottom: var(--space-2);
+    color: var(--color-light);
+}
+
+.features__card--lnk .features__itemTitle {
+    color: var(--color-dark);
+}
+
+.features__price {
+    font: var(--font-h5);
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    font-weight: 600;
+}
+
+.features__card--lnk .features__price {
+    color: var(--color-dark);
+}
+
+.features__btn {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: transparent;
+    color: var(--color-light);
+    border: 1px solid var(--color-light);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.features__card--lnk .features__btn {
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.features__btn:hover {
+    background: var(--color-light);
+    color: var(--color-dark);
+}
+
+.features__card--lnk .features__btn:hover {
+    background: var(--color-dark);
+    color: var(--color-light);
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .features {
+        padding: var(--space-4) var(--space-3);
+    }
+
+    .features__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+}

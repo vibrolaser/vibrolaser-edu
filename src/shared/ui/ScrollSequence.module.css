@@ -1,0 +1,242 @@
+.sequence {
+    position: relative;
+}
+
+.sequence__sticky {
+    position: sticky;
+    top: 160px;
+    height: calc((var(--vh, 1vh) * 100) - var(--header-height, 80px));
+    overflow: hidden;
+    z-index: 10;
+}
+
+.sequence__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 1fr);
+    gap: var(--space-4);
+    will-change: transform;
+    /* Плавный скролл с современным easing */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sequence__card {
+    /* Базовые стили без анимаций - анимации управляются JavaScript */
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    filter: blur(2px);
+
+    /* Убираем transition чтобы избежать конфликтов с JavaScript */
+    transition: none;
+
+    /* Улучшенная производительность */
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    border-radius: 30px;
+    border: 2px solid transparent;
+
+    /* Hover эффекты */
+    cursor: pointer;
+    transition: all .3s;
+}
+
+/* Активная карточка по центру */
+.sequence__card__active {
+    filter: none;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    border-color: rgba(77, 226, 196, 0.35);
+    box-shadow: 0 10px 40px rgba(77, 226, 196, 0.15);
+}
+
+
+/* Пульсация активной карточки */
+@keyframes cardPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 8px 30px rgba(77, 226, 196, 0.3);
+    }
+}
+
+/* Прогресс-бар с современным дизайном */
+.sequence__progress {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.sequence__progressBar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: 2px;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Добавляем shimmer эффект */
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive adjustments */
+@media(max-width:1240px) {
+    .sequence__sticky {
+        top: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 60px));
+    }
+
+    .sequence__card {
+        /* Уменьшаем размеры для мобильных */
+        min-width: 280px;
+        transform: translateY(40px) scale(0.98);
+    }
+
+    .sequence__card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 70px));
+    }
+
+    .sequence__card {
+        min-width: 300px;
+    }
+
+    .sequence__track {
+        gap: var(--space-3);
+    }
+}
+
+/* Малые десктопы */
+@media (min-width: 1024px) and (max-width: 1240px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 75px));
+    }
+
+    .sequence__card {
+        min-width: 320px;
+    }
+}
+
+/* Средние десктопы */
+@media (min-width: 1241px) and (max-width: 1439px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 78px));
+    }
+
+    .sequence__card {
+        min-width: 340px;
+    }
+}
+
+/* Большие десктопы */
+@media (min-width: 1440px) and (max-width: 1979px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 80px));
+    }
+
+    .sequence__card {
+        min-width: 360px;
+    }
+
+    .sequence__track {
+        gap: var(--space-5);
+    }
+}
+
+/* 2K экраны */
+@media (min-width: 1980px) and (max-width: 2047px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 85px));
+    }
+
+    .sequence__card {
+        min-width: 380px;
+    }
+
+    .sequence__track {
+        gap: var(--space-6);
+    }
+}
+
+/* 4K экраны */
+@media (min-width: 2048px) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 90px));
+    }
+
+    .sequence__card {
+        min-width: 400px;
+    }
+
+    .sequence__track {
+        gap: calc(var(--space-6) * 1.5);
+    }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-width: 767px) and (orientation: landscape) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 50px));
+    }
+
+    .sequence__card {
+        min-width: 260px;
+    }
+}
+
+/* Портретная ориентация на планшетах */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    .sequence__sticky {
+        height: calc((var(--vh, 1vh) * 100) - var(--header-height, 80px));
+    }
+}
+
+/* Улучшения для accessibility */
+.sequence__card:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Оптимизация для reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .sequence__card,
+    .sequence__track {
+        transition: none;
+        animation: none;
+    }
+
+    .sequence__card__active {
+        animation: none;
+    }
+}

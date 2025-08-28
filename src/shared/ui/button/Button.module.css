@@ -1,0 +1,91 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--button-gap);
+    border-radius: var(--button-radius);
+    border: var(--button-border-width) solid transparent;
+    font: var(--button-font);
+    padding: var(--button-md-py) var(--button-md-px);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .12s ease;
+    will-change: transform, background-color, color, border-color;
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+/* Variants */
+.primary {
+    background: var(--color-primary);
+    color: #0a0a0a;
+}
+
+.primary:hover {
+    background: var(--color-button-primary-hover);
+}
+
+.secondary {
+    background: transparent;
+    color: var(--color-light);
+    border-color: rgba(255, 255, 255, .2);
+}
+
+.secondary:hover {
+    background: rgba(255, 255, 255, .06);
+    border-color: rgba(255, 255, 255, .35);
+}
+
+.ghost {
+    background: transparent;
+    color: var(--color-light);
+}
+
+.ghost:hover {
+    background: rgba(255, 255, 255, .06);
+}
+
+/* Sizes */
+.sm {
+    padding: var(--button-sm-py) var(--button-sm-px);
+}
+
+.md {
+    padding: var(--button-md-py) var(--button-md-px);
+}
+
+.lg {
+    padding: var(--button-lg-py) var(--button-lg-px);
+}
+
+.block {
+    width: 100%;
+}
+
+.iconLeft,
+.iconRight {
+    display: inline-flex;
+    align-items: center;
+}
+
+.spinner {
+    width: var(--button-spinner-size);
+    height: var(--button-spinner-size);
+    border-radius: 50%;
+    border: var(--button-spinner-border) solid rgba(255, 255, 255, .5);
+    border-top-color: rgba(255, 255, 255, 1);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

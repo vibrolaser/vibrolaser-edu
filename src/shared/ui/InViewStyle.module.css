@@ -1,0 +1,26 @@
+.inViewContainer {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.inViewContainer.initial {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.inViewContainer.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (prefers-reduced-motion: reduce) {
+  .inViewContainer {
+    transition: none;
+  }
+  
+  .inViewContainer.initial,
+  .inViewContainer.animated {
+    opacity: 1;
+    transform: none;
+  }
+}

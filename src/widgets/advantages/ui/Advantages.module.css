@@ -1,0 +1,108 @@
+.advantages {
+    padding: var(--space-6) 0;
+    background: var(--color-dark);
+    color: var(--color-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.advantages__title {
+    font: var(--font-h2);
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-4);
+    max-width: var(--bp-1979);
+    width: 100%;
+    /* Начальное состояние для анимации */
+    transform: translateX(0);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.advantages__card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: var(--space-4);
+    text-align: left;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.advantages__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.advantages__cardTitle {
+    font: var(--font-h3);
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.advantages__text {
+    font: var(--font-body);
+    margin-bottom: var(--space-3);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.advantages__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.advantages__listItem {
+    font: var(--font-body);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-3);
+    position: relative;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.advantages__listItem::before {
+    content: "•";
+    color: var(--color-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .advantages {
+        padding: var(--space-4) var(--space-3);
+    }
+
+    .advantages__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+}

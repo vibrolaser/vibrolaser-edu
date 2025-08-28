@@ -1,0 +1,54 @@
+/* Reviews Section Gradient */
+.reviewsGradient {
+    position: absolute;
+    width: 1357px;
+    height: 1357px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 57.5% 0.02%,
+            #4de2c4 3.96%,
+            #4de2c4 32.78%,
+            rgba(83, 85, 238, 0) 98.77%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Advantages Section Gradient */
+.advantagesGradient {
+    position: absolute;
+    width: 2317px;
+    height: 2317px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse 20.94% 57.11% at 57.49% 0.02%,
+            #4de2c4 3.96%,
+            #4de2c4 32.78%,
+            rgba(83, 85, 238, 0) 98.77%);
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1920px) {
+    .reviewsGradient {
+        width: 100vw;
+        height: 100vw;
+        max-width: 1357px;
+        max-height: 1357px;
+    }
+
+    .advantagesGradient {
+        width: 100vw;
+        height: 100vw;
+        max-width: 2317px;
+        max-height: 2317px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .reviewsGradient,
+    .advantagesGradient {
+        width: 80vw;
+        height: 80vw;
+    }
+}
